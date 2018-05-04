@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bizcloud.memberdecoration.dao.memberadinfo.MemberAdInfoReleaseMapper">
+    <resultMap id="BaseResultMap" type="com.bizcloud.memberdecoration.modal.fitness.MemberAdInfoBO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="page_id" jdbcType="BIGINT" property="pageId"/>
+        <result column="module_id" jdbcType="BIGINT" property="moduleId"/>
+        <result column="keyname" jdbcType="VARCHAR" property="keyname"/>
+        <result column="title_context" jdbcType="VARCHAR" property="titleContext"/>
+        <result column="title_url" jdbcType="VARCHAR" property="titleUrl"/>
+        <result column="title_pic" jdbcType="VARCHAR" property="titlePic"/>
+        <result column="more_context" jdbcType="VARCHAR" property="moreContext"/>
+        <result column="more_url" jdbcType="VARCHAR" property="moreUrl"/>
+        <result column="more_pic" jdbcType="VARCHAR" property="morePic"/>
+        <result column="other_context" jdbcType="VARCHAR" property="otherContext"/>
+        <result column="other_url" jdbcType="VARCHAR" property="otherUrl"/>
+        <result column="other_pic" jdbcType="VARCHAR" property="otherPic"/>
+        <result column="module_signname" jdbcType="VARCHAR" property="moduleSignname"/>
+        <result column="context" jdbcType="LONGVARCHAR" property="context"/>
+        <result column="param" jdbcType="LONGVARCHAR" property="param"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, page_id, module_id, keyname, title_context, title_url, title_pic, more_context, 
+    more_url, more_pic, other_context, other_url, other_pic, module_signname,context, param
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from member_ad_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_ad_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.bizcloud.memberdecoration.modal.fitness.MemberAdInfoBO"
+            useGeneratedKeys="true" keyProperty="id">
+        replace into member_ad_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="pageId != null">
+                page_id,
+            </if>
+            <if test="moduleId != null">
+                module_id,
+            </if>
+            <if test="keyname != null">
+                keyname,
+            </if>
+            <if test="titleContext != null">
+                title_context,
+            </if>
+            <if test="titleUrl != null">
+                title_url,
+            </if>
+            <if test="titlePic != null">
+                title_pic,
+            </if>
+            <if test="moreContext != null">
+                more_context,
+            </if>
+            <if test="moreUrl != null">
+                more_url,
+            </if>
+            <if test="morePic != null">
+                more_pic,
+            </if>
+            <if test="otherContext != null">
+                other_context,
+            </if>
+            <if test="otherUrl != null">
+                other_url,
+            </if>
+            <if test="otherPic != null">
+                other_pic,
+            </if>
+            <if test="moduleSignname != null">
+                module_signname,
+            </if>
+            <if test="context != null">
+                context,
+            </if>
+            <if test="param != null">
+                param,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="pageId != null">
+                #{pageId,jdbcType=BIGINT},
+            </if>
+            <if test="moduleId != null">
+                #{moduleId,jdbcType=BIGINT},
+            </if>
+            <if test="keyname != null">
+                #{keyname,jdbcType=VARCHAR},
+            </if>
+            <if test="titleContext != null">
+                #{titleContext,jdbcType=VARCHAR},
+            </if>
+            <if test="titleUrl != null">
+                #{titleUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="titlePic != null">
+                #{titlePic,jdbcType=VARCHAR},
+            </if>
+            <if test="moreContext != null">
+                #{moreContext,jdbcType=VARCHAR},
+            </if>
+            <if test="moreUrl != null">
+                #{moreUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="morePic != null">
+                #{morePic,jdbcType=VARCHAR},
+            </if>
+            <if test="otherContext != null">
+                #{otherContext,jdbcType=VARCHAR},
+            </if>
+            <if test="otherUrl != null">
+                #{otherUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="otherPic != null">
+                #{otherPic,jdbcType=VARCHAR},
+            </if>
+            <if test="moduleSignname != null">
+                #{moduleSignname,jdbcType=VARCHAR},
+            </if>
+            <if test="context != null">
+                #{context,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="param != null">
+                #{param,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.bizcloud.memberdecoration.modal.fitness.MemberAdInfoBO">
+        update member_ad_info
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="pageId != null">
+                page_id = #{pageId,jdbcType=BIGINT},
+            </if>
+            <if test="moduleId != null">
+                module_id = #{moduleId,jdbcType=BIGINT},
+            </if>
+            <if test="keyname != null">
+                keyname = #{keyname,jdbcType=VARCHAR},
+            </if>
+            <if test="titleContext != null">
+                title_context = #{titleContext,jdbcType=VARCHAR},
+            </if>
+            <if test="titleUrl != null">
+                title_url = #{titleUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="titlePic != null">
+                title_pic = #{titlePic,jdbcType=VARCHAR},
+            </if>
+            <if test="moreContext != null">
+                more_context = #{moreContext,jdbcType=VARCHAR},
+            </if>
+            <if test="moreUrl != null">
+                more_url = #{moreUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="morePic != null">
+                more_pic = #{morePic,jdbcType=VARCHAR},
+            </if>
+            <if test="otherContext != null">
+                other_context = #{otherContext,jdbcType=VARCHAR},
+            </if>
+            <if test="otherUrl != null">
+                other_url = #{otherUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="otherPic != null">
+                other_pic = #{otherPic,jdbcType=VARCHAR},
+            </if>
+            <if test="moduleSignname != null">
+                module_signname = #{moduleSignname,jdbcType=VARCHAR},
+            </if>
+            <if test="context != null">
+                context = #{context,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="param != null">
+                param = #{param,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="getMemberAdInfoBOByPageIdKeyName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from member_ad_info
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="pageId != null">
+                    page_id = #{pageId,jdbcType=BIGINT} AND
+                </if>
+                <if test="keyname != null">
+                    keyname = #{keyname,jdbcType=VARCHAR} AND
+                </if>
+            </trim>
+        </where>
+
+    </select>
+
+    <select id="getMemberAdInfoBOListByPageId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from member_ad_info
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="pageId != null">
+                    page_id = #{pageId,jdbcType=BIGINT} AND
+                </if>
+            </trim>
+        </where>
+    </select>
+
+
+</mapper>

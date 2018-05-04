@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+    
+	<bean id="sphMonitor" class="com.bizcloud.architect.smonitor.aspect.SphAspect" />
+	<aop:config>
+		<aop:aspect id="sphAspect" ref="sphMonitor">
+			<aop:pointcut id="sphMethod" expression="@annotation(com.bizcloud.architect.smonitor.annotation.Sph)" />
+			<aop:around method="around" pointcut-ref="sphMethod" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean class="com.bizcloud.architect.smonitor.dubbo.SphBean">
+		<property name="package" value="com.bizcloud.groupbuying" />
+	</bean>
+	
+</beans>

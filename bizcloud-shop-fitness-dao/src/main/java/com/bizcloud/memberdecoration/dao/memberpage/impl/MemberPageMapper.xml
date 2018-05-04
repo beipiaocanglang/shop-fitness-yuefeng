@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bizcloud.memberdecoration.dao.memberpage.MemberPageMapper">
+    <resultMap id="BaseResultMap" type="com.bizcloud.memberdecoration.modal.fitness.MemberPage">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="page_type" jdbcType="TINYINT" property="pageType"/>
+        <result column="member_id" jdbcType="VARCHAR" property="memberId"/>
+        <result column="template_id" jdbcType="BIGINT" property="templateId"/>
+        <result column="add_time" jdbcType="TIMESTAMP" property="addTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="shop_id" property="shopId" jdbcType="VARCHAR"/>
+        <result column="platform_id" property="platformId" jdbcType="VARCHAR"/>
+        <result column="page_keyname" property="pageKeyname" jdbcType="VARCHAR"/>
+        <result column="page_name" property="pageName" jdbcType="VARCHAR"/>
+        <result column="online_status" jdbcType="TINYINT" property="onlineStatus"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id,
+    page_type,
+    member_id,
+    template_id,
+    add_time,
+    modify_time,
+    platform_id,
+    shop_id,
+    page_keyname,
+    page_name,
+    online_status
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from member_page
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from member_page
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+    <insert id="insertSelective" parameterType="com.bizcloud.memberdecoration.modal.fitness.MemberPage"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into member_page
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="pageType != null">
+                page_type,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="templateId != null">
+                template_id,
+            </if>
+            <if test="addTime != null">
+                add_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="shopId != null">
+            shop_id,
+            </if>
+            <if test="platformId != null">
+                platform_id,
+            </if>
+            <if test="pageKeyname != null">
+                page_keyname,
+            </if>
+            <if test="pageName != null">
+                page_name,
+            </if>
+            <if test="onlineStatus != null">
+                online_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="pageType != null">
+                #{pageType,jdbcType=TINYINT},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=VARCHAR},
+            </if>
+            <if test="templateId != null">
+                #{templateId,jdbcType=BIGINT},
+            </if>
+            <if test="addTime != null">
+                #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="platformId != null">
+                #{platformId,jdbcType=VARCHAR},
+            </if>
+            <if test="pageKeyname != null">
+                #{pageKeyname,jdbcType=VARCHAR},
+            </if>
+            <if test="pageName != null">
+                #{pageName,jdbcType=VARCHAR},
+            </if>
+            <if test="onlineStatus != null">
+                #{onlineStatus},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bizcloud.memberdecoration.modal.fitness.MemberPage">
+        update member_page
+        <set>
+            <if test="pageType != null">
+                page_type = #{pageType,jdbcType=TINYINT},
+            </if>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=VARCHAR},
+            </if>
+            <if test="templateId != null">
+                template_id = #{templateId,jdbcType=BIGINT},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="platformId != null">
+                platform_id = #{platformId,jdbcType=VARCHAR},
+            </if>
+            <if test="pageKeyname != null">
+                page_keyname = #{pageKeyname,jdbcType=VARCHAR},
+            </if>
+            <if test="pageName != null">
+                page_name = #{pageName,jdbcType=VARCHAR},
+            </if>
+            <if test="onlineStatus != null">
+                online_status = #{onlineStatus},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <resultMap id="MemberPageVOss" type="com.bizcloud.memberdecoration.modal.fitness.MemberPageVO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="page_type" jdbcType="TINYINT" property="pageType"/>
+        <result column="member_id" jdbcType="VARCHAR" property="memberId"/>
+        <result column="template_id" jdbcType="BIGINT" property="templateId"/>
+        <result column="add_time" jdbcType="TIMESTAMP" property="addTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="shop_id" property="shopId" jdbcType="VARCHAR"/>
+        <result column="platform_id" property="platformId" jdbcType="VARCHAR"/>
+        <result column="page_keyname" property="pageKeyname" jdbcType="VARCHAR"/>
+        <result column="page_name" property="pageName" jdbcType="VARCHAR"/>
+        <association property="systemTemplate" column="template_id=template_id"
+                     select="selectByTemplateId"></association>
+    </resultMap>
+    <select id="getMemberPageByParam" parameterType="map" resultMap="MemberPageVOss">
+        select
+        <include refid="Base_Column_List"/>
+        from member_page
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="param.shopId != null">
+                    shop_id = #{param.shopId,jdbcType=VARCHAR} AND
+                </if>
+                <if test="param.platformId != null">
+                    platform_id = #{param.platformId,jdbcType=VARCHAR} AND
+                </if>
+            </trim>
+        </where>
+
+    </select>
+
+    <select id="selectByTemplateId" resultMap="BaseSystemTemplateResultMap">
+    select
+    id, name, url, realname
+    from system_template
+    where id = #{template_id,jdbcType=BIGINT}
+  </select>
+
+    <resultMap id="BaseSystemTemplateResultMap" type="com.bizcloud.memberdecoration.modal.fitness.SystemTemplate">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="realname" jdbcType="VARCHAR" property="realname"/>
+    </resultMap>
+    
+    <select id="getMemberPageByTypeParam" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        member_page
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="param.shopId != null">
+                    shop_id = #{param.shopId,jdbcType=VARCHAR} AND
+                </if>
+                <if test="param.platformId != null">
+                    platform_id = #{param.platformId,jdbcType=VARCHAR} AND
+                </if>
+                <if test="param.pageType != null">
+                    page_type = #{param.pageType} AND
+                </if>
+
+            </trim>
+
+        </where>
+    </select>
+
+    <update id="updateMemberPagesOnlineStatusByParam" >
+        update member_page
+        <set>
+            <if test="onlineStatus != null">
+                online_status = #{onlineStatus}
+            </if>
+        </set>
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="pageType != null">
+                    page_type = #{pageType,jdbcType=TINYINT} AND
+                </if>
+                <if test="platformId != null and platformId !='' ">
+                    platform_id = #{platformId,jdbcType=VARCHAR} AND
+                </if>
+                <if test="shopId != null and shopId !='' ">
+                    shop_id = #{shopId,jdbcType=VARCHAR} AND
+                </if>
+            </trim>
+        </where>
+
+    </update>
+</mapper>
