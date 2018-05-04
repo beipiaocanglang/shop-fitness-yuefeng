@@ -1,6 +1,5 @@
 package com.bizcloud.memberdecoration.dao.memberadinfo;
 
-
 import com.bizcloud.memberdecoration.modal.fitness.MemberAdInfoBO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
